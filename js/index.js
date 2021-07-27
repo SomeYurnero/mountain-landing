@@ -1,9 +1,13 @@
 const positions = document.querySelectorAll(".position");
 const switcherPositions = document.querySelectorAll(".switcher__position");
 const switcherPaginationScroll = document.querySelector(".switcher__inner-scroll");
-console.log(positions);
-console.log(switcherPositions);
-console.log(switcherPaginationScroll);
+const switcherPagination = document.querySelector(".switcher__pagination");
+
+function addLoadedClass() {
+    switcherPagination.classList.add("_loaded");
+};
+
+addLoadedClass();
 
 function getPosition0PageY() {
     let positionPageY = positions[0].getBoundingClientRect().top + window.pageYOffset;
@@ -54,3 +58,25 @@ window.addEventListener("scroll", getPosition0PageY);
 window.addEventListener("scroll", getPosition1PageY);
 window.addEventListener("scroll", getPosition2PageY);
 window.addEventListener("scroll", getPosition3PageY);
+
+function setScrollType() {
+    if (switcherPagination.classList.contains("_free")) {
+        switcherPagination.classList.remove("_free");
+    }
+
+    for (let index = 0; index < positions.length; index++) {
+        const position = positions[index];
+        const positionContent = position.querySelector(".position__content");
+        if (positionContent) {
+            const positionContentHeight = positionContent.offsetHeight;
+            if (window.innerHeight <= positionContentHeight) {
+                switcherPagination.classList.add("_free");
+                break;
+            }
+        }
+    }
+}
+
+setScrollType();
+window.addEventListener("resize", setScrollType);
+
