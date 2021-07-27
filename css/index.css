@@ -447,6 +447,15 @@ body {
   left: -15%;
 }
 
+@media (pointer: coarse) {
+  .images-parallax__all-images {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+}
+
 .images-parallax__clouds {
   background: url("../images/clouds.png") top/cover no-repeat;
 }
