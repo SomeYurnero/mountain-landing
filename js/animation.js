@@ -3,7 +3,9 @@
 window.onload = function () {
     const parallax = document.querySelector(".parallax");
 
-    if (parallax) {
+    if (window.matchMedia("(any-pointer: coarse)").matches) {
+        return;
+    } else if (parallax) {
         const content = document.querySelector(".parallax__content");
         const clouds = document.querySelector(".images-parallax__clouds");
         const mountains = document.querySelector(".images-parallax__mountains");

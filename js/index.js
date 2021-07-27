@@ -79,4 +79,3 @@ function setScrollType() {
 
 setScrollType();
 window.addEventListener("resize", setScrollType);
-
